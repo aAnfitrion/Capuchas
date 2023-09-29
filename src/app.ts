@@ -2,6 +2,7 @@ import { Client, GatewayIntentBits } from "discord.js";
 import dotenv from "dotenv";
 
 import registrarUsuarios from "./eventos/registrarUsuarios";
+import importantes from "./comandos/importantes";
 
 dotenv.config();
 
@@ -22,4 +23,8 @@ client.login(TOKEN);
 
 client.on("messageCreate", (message) => {
   registrarUsuarios(message);
+});
+
+client.on("messageCreate", (message) => {
+  importantes(message);
 });
