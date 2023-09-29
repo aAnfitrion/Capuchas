@@ -1,7 +1,17 @@
 import { Client, GatewayIntentBits } from "discord.js";
 import dotenv from "dotenv";
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+import registrarUsuarios from "./eventos/registrarUsuarios";
+
+dotenv.config();
+
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+  ],
+});
 const TOKEN = process.env.TOKEN;
 
 client.on("ready", () => {
@@ -9,3 +19,7 @@ client.on("ready", () => {
 });
 
 client.login(TOKEN);
+
+client.on("messageCreate", (message) => {
+  registrarUsuarios(message);
+});
