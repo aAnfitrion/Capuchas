@@ -1,12 +1,17 @@
 {
   "name": "capuchas",
   "version": "0.0.1",
-  "author": "aAnfitrion y KevinManuelMarte",
+  "description": "El bot oficial del servidor de Discord 'Caverna de la programación'",
+  "main": "app.ts",
+  "scripts": {
+    "dev": "nodemon src/app.ts"
+  },
   "repository": {
     "type": "git",
     "url": "capuchas"
   },
-  "main": "app.ts",
+  "author": "aAnfitrion y KevinManuelMarte",
+  "license": "ISC",
   "dependencies": {
     "axios": "^1.5.1",
     "discord.js": "^14.13.0",
@@ -14,9 +19,7 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },
-  "description": "El bot oficial del servidor de Discord 'Caverna de la programación'",
-  "license": "ISC",
-  "scripts": {
-    "dev": "bun run src/app --watch"
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
