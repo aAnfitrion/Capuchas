@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
+import type { usuariosD } from "../tipos";
 
 dotenv.config();
 
@@ -18,10 +19,20 @@ export default async function destacados(message: any) {
     })
     .catch((error) => console.log(error));
 
+  if (!usuariosInfo) {
+    message.channel.send(
+      "Lo sentimos, no se ha podido ejecutar este comando. Intentalo de nuevo más tarde.",
+    );
+    return;
+  }
+
   let listaUsuarios = "";
 
-  usuariosInfo.sort((mayor, menor) => menor.importancia - mayor.importancia);
-  usuariosInfo.map((usuario) => {
+  usuariosInfo.sort(
+    (mayor: usuariosD, menor: usuariosD) =>
+      menor.importancia - mayor.importancia,
+  );
+  usuariosInfo.map((usuario: usuariosD) => {
     listaUsuarios += `👤 <@${usuario.discord_id}> con ${usuario.importancia} de importancia \n`;
   });
 
