@@ -25,6 +25,10 @@ client.on("messageCreate", (message) => {
   registrarUsuarios(message);
 });
 
-client.on("messageCreate", (message) => {
-  importantes(message);
+client.on("interactionCreate", async (interaction) => {
+  if (!interaction.isChatInputCommand()) return;
+
+  if (interaction.commandName === "importantes") {
+    await importantes(interaction);
+  }
 });
