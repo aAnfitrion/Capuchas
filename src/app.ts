@@ -1,6 +1,7 @@
 import { Client, GatewayIntentBits } from "discord.js";
 import dotenv from "dotenv";
-import importantes from "./comandos/ban";
+import banear from "./comandos/ban";
+import importantes from "./comandos/importantes";
 
 dotenv.config();
 
@@ -23,6 +24,10 @@ client.on("interactionCreate", async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
   if (interaction.commandName === "ban") {
-    await importantes(client, interaction);
+    await banear(client, interaction);
+  }
+
+  if (interaction.commandName === "importantes") {
+    importantes(interaction);
   }
 });
