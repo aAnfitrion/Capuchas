@@ -4,7 +4,9 @@
   "description": "El bot oficial del servidor de Discord 'Caverna de la programación'",
   "main": "app.ts",
   "scripts": {
+    "registrar": "nodemon src/registrarComandos.ts",
     "dev": "nodemon src/app.ts"
+
   },
   "repository": {
     "type": "git",
@@ -13,6 +15,7 @@
   "author": "aAnfitrion y KevinManuelMarte",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.5.1",
     "discord.js": "^14.13.0",
     "dotenv": "^16.3.1",
     "ts-node": "^10.9.1",
