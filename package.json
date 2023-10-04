@@ -4,7 +4,9 @@
   "description": "El bot oficial del servidor de Discord 'Caverna de la programación'",
   "main": "app.ts",
   "scripts": {
+    "registrar": "nodemon src/registrarComandos.ts",
     "dev": "nodemon src/app.ts"
+
   },
   "repository": {
     "type": "git",

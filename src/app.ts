@@ -1,8 +1,6 @@
 import { Client, GatewayIntentBits } from "discord.js";
 import dotenv from "dotenv";
-
-import registrarUsuarios from "./eventos/registrarUsuarios";
-import importantes from "./comandos/importantes";
+import importantes from "./comandos/ban";
 
 dotenv.config();
 
@@ -21,14 +19,10 @@ client.on("ready", () => {
 
 client.login(TOKEN);
 
-client.on("messageCreate", (message) => {
-  registrarUsuarios(message);
-});
-
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
-  if (interaction.commandName === "importantes") {
-    await importantes(interaction);
+  if (interaction.commandName === "ban") {
+    await importantes(client, interaction);
   }
 });

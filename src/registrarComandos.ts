@@ -1,19 +1,33 @@
-import { REST, Routes } from "discord.js";
-
-require("dotenv").config();
-const { TOKEN, CLIENT_ID, GUILD_ID } = process.env;
-
+import dotenv from "dotenv";
+dotenv.config()
+const CLIENTID:any = process.env.CLIENTID;
+const GUILDID:any = process.env.GUILDID;
+const TOKEN:any = process.env.TOKEN;
+import { ApplicationCommand, ApplicationCommandOptionType, REST, Routes } from "discord.js";
 const comandos = [
   {
-    name: "importantes",
-    description: "Comando que funcionará con typescript",
+    name: "ban",
+    description: "Comando para banear a un usuario del servidor",
+    options: [
+      {
+        name: 'usuario',
+        description: 'usuario a banear',
+        required: true,
+        type: ApplicationCommandOptionType.User,
+      },
+      {
+        name: 'reason',
+        description: 'razón para banear al usuario especificado',
+        required: true,
+        type: ApplicationCommandOptionType.String,
+      }
+    ]
   },
 ];
-
 (async () => {
   try {
     const rest = new REST({ version: "10" }).setToken(TOKEN);
-    await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {
+    await rest.put(Routes.applicationGuildCommands(CLIENTID, GUILDID), {
       body: comandos,
     });
 
