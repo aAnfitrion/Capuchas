@@ -2,6 +2,7 @@ import { Client, GatewayIntentBits } from "discord.js";
 import dotenv from "dotenv";
 import banear from "./comandos/ban";
 import importantes from "./comandos/importantes";
+import registrarUsuarios from "./eventos/registrarUsuarios";
 
 dotenv.config();
 
@@ -30,4 +31,8 @@ client.on("interactionCreate", async (interaction) => {
   if (interaction.commandName === "importantes") {
     importantes(interaction);
   }
+});
+
+client.on("messageCreate", (message) => {
+  registrarUsuarios(message);
 });

@@ -8,6 +8,15 @@ const API_URL = process.env.API_URL;
 export default async function registrarUsuarios(message: any) {
   if (message.author.bot) return;
 
+  const pingBackend = await axios.get(`${API_URL}/usuarios`)
+    .then((response) => response.data)
+    .catch((error) => console.error(error));
+
+  if (!pingBackend) {
+    console.error("No se pudo conectar con el backend");
+    return;
+  }
+
   const infoUsuario = {
     discord_id: message.author.id,
     nombre_visual: message.author.globalName,
@@ -19,11 +28,6 @@ export default async function registrarUsuarios(message: any) {
     .get(`${API_URL}/usuarios/${infoUsuario.discord_id}`)
     .then((response) => response.data)
     .catch((error) => console.error(error));
-
-  if (!usuarioExistente) {
-    console.log("Backend no disponible");
-    return;
-  }
 
   if (usuarioExistente) {
     await axios
