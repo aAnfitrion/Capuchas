@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
-import type { usuariosD } from "../tipos";
+import type { usuariosD } from "../../tipos";
 
 dotenv.config();
 
