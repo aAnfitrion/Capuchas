@@ -5,23 +5,31 @@
   "main": "app.ts",
   "scripts": {
     "registrar": "nodemon src/registrarComandos.ts",
-    "dev": "nodemon src/app.ts"
-
+    "dev": "nodemon  src/app.ts",
+    "api": "nodemon src/API/MyAPI.ts",
+    "AgregarUsuario": "nodemon src/API/Controller/DatabaseAgregarUsuario.ts"
   },
   "repository": {
     "type": "git",
     "url": "capuchas"
   },
-  "author": "aAnfitrion y KevinManuelMarte",
+  "author": "aAnfitrion y KevinmManuelMarte",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.5.1",
     "discord.js": "^14.13.0",
     "dotenv": "^16.3.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "express": "^4.18.2"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "@types/express": "^4.17.18",
+    "@types/mysql": "^2.15.22",
+    "axios": "^1.5.1",
+    "mariadb": "^3.2.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.6.1",
+    "nodemon": "^3.0.1",
+    "standard": "^17.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
   }
 }

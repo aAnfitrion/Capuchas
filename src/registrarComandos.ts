@@ -3,26 +3,109 @@ dotenv.config()
 const CLIENTID:any = process.env.CLIENTID;
 const GUILDID:any = process.env.GUILDID;
 const TOKEN:any = process.env.TOKEN;
-import { ApplicationCommand, ApplicationCommandOptionType, REST, Routes } from "discord.js";
+import { ApplicationCommand, ApplicationCommandOptionType, REST, RESTPatchAPIApplicationGuildCommandJSONBody, RESTPatchAPIAutoModerationRuleJSONBody, Routes } from "discord.js";
 const comandos = [
   {
     name: "ban",
     description: "Comando para banear a un usuario del servidor",
     options: [
       {
-        name: 'usuario',
+        name: 'id_usuario',
         description: 'usuario a banear',
         required: true,
         type: ApplicationCommandOptionType.User,
       },
       {
-        name: 'reason',
+        name: 'razon',
         description: 'razón para banear al usuario especificado',
         required: true,
         type: ApplicationCommandOptionType.String,
+      },
+      {
+        name: 'mensajes_a_eliminar',
+        description: 'los mensajes publicados en el tiempo indicado (segundos) seran eliminados.',
+        required: true,
+        type: ApplicationCommandOptionType.Number,
+      },
+    ]
+  },
+  {
+    name: "unban",
+    description: "Comando para banear a un usuario del servidor",
+    options: [
+      {
+        name: 'id_usuario',
+        description: 'ID del usuario a desbanear',
+        required: true,
+        type: ApplicationCommandOptionType.User,
+      },
+      {
+        name: 'razon',
+        description: 'razón para desbanear al usuario especificado',
+        required: true,
+        type: ApplicationCommandOptionType.String,
+      },
+    ]
+  },
+  {
+    name: "expulsar",
+    description: "Comando para expulsar a un usuario",
+    options: [
+      {
+        name: 'usuario',
+        description: 'Usuario a expulsar',
+        required: true,
+        type: ApplicationCommandOptionType.User
+      },
+      {
+        name: 'razon',
+        description: 'Razon de la expulsión',
+        required: true,
+        type: ApplicationCommandOptionType.String
       }
     ]
   },
+  {
+    name: 'usuario',
+    description: 'Permite obtener toda información del usuario mencionado',
+    options: [
+      {
+        name: 'usuario',
+        description: 'Usuario del que se quiere obtener la información',
+        required: true,
+        type: ApplicationCommandOptionType.User
+      }
+    ]
+  },
+  {
+    name: 'avatar',
+    description: 'Te permite obtener una vista más amplia de un avatar',
+    options: [
+      {
+        name: 'usuario',
+        description: 'Usuario del que se quiere obtener la información',
+        required: true,
+        type: ApplicationCommandOptionType.User
+      }
+    ]
+  },
+  {
+    name: 'lenguaje',
+    description: 'Te permite obtener la información de un lenguaje',
+    options: [
+      {
+        name: 'lenguaje',
+        description: 'Area del que se quiere obtener la información (frontend/backend)',
+        required: true,
+        type: ApplicationCommandOptionType.String
+      }
+    ]
+  },
+  {
+    name: 'servidor',
+    description: 'Permite obtener toda información del servidor',
+  },
+  
 ];
 (async () => {
   try {
