@@ -6,8 +6,9 @@ import { unban } from "./comandos/moderacion/unban";
 import info_usuario from "./comandos/utilidad/info_usuario";
 import info_server from "./comandos/utilidad/info_server";
 import info_usuario_avatar from "./comandos/utilidad/info_usuario_avatar";
-import Info_Area from "./comandos/utilidad/info_area";
+import Info_Area from "./comandos/utilidad/subir_oferta";
 import axios from "axios";
+import Subir_Oferta from "./comandos/utilidad/subir_oferta";
 
 
 const client = new Client({
@@ -26,11 +27,6 @@ client.on("ready", () => {
 
 client.login(TOKEN);
 
-//DAR XP AL USUARIO
-client.on('messageCreate', async (interaction)=>{
-  await axios.get(`${APIURL}/Usuarios_Capuchas/AgregarUsuario`, {params: {usuario_id: interaction.author.id, usuario_nombre: interaction.author.globalName, cantidad_xp: 0}})
- await axios.get(`${APIURL}/Usuarios_Capuchas/darXP`, {params: {usuario_id: interaction.author.id, cantidad_xp: 2}})
-})
 
 
 client.on("interactionCreate", async (interaction) => {
@@ -61,8 +57,8 @@ client.on("interactionCreate", async (interaction) => {
       await info_usuario_avatar(interaction)
       break;
     
-    case "lenguaje":
-      await Info_Area(interaction)
+    case "subir_Oferta":
+      await Subir_Oferta(interaction)
       break;
     default:
       break;

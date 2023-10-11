@@ -105,6 +105,36 @@ const comandos = [
     name: 'servidor',
     description: 'Permite obtener toda información del servidor',
   },
+  {
+    name: 'subir_oferta',
+    description: 'Permite subir una oferta de trabajo con sueldo en el canal de ofertas de trabajo',
+    options: [
+      {
+        name: 'titulo',
+        description: 'Escribe en el titulo que buscas exactamente',
+        required: true,
+        type: ApplicationCommandOptionType.String
+      },
+      {
+        name: 'Descripción',
+        description: 'Describe de manera mas especifica que buscas',
+        required: true,
+        type: ApplicationCommandOptionType.String
+      },
+      {
+        name: 'Pago',
+        description: 'El pago que daras por el trabajo',
+        required: true,
+        type: ApplicationCommandOptionType.String
+      },
+      {
+        name: 'Forma de contacto',
+        description: 'Escribe la forma en la que contactarte',
+        required: true,
+        type: ApplicationCommandOptionType.String
+      },
+    ]
+  }
   
 ];
 (async () => {
